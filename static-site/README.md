@@ -1,4 +1,4 @@
-# Webserver Apache2 Sample
+# Static Site Sample
 
 ## Container Build
 
@@ -9,41 +9,44 @@ docker image build -t kledsonhugo/static-site:1.0.0 . --no-cache
 - Output example
 
   ```
-  $ docker image build -t kledsonhugo/apache2:1.0.0 . --no-cache
-  [+] Building 30.1s (6/6) FINISHED
-   => [internal] load build definition from Dockerfile                             0.0s
-   => => transferring dockerfile: 38B                                              0.0s 
-   => [internal] load .dockerignore                                                0.0s 
-   => => transferring context: 2B                                                  0.0s 
-   => [internal] load metadata for docker.io/library/debian:latest                10.9s 
-   => CACHED [1/2] FROM docker.io/library/debian@sha256:e538a2f0566efc44db215032   0.0s
-   => [2/2] RUN apt-get update && apt-get install -y apache2 && apt-get clean     18.4s 
-   => exporting to image                                                           0.7s
-   => => exporting layers                                                          0.7s
-   => => writing image sha256:458cdbbd44af09aa4eec2b9a74e042aa653a236a34fb41dff6   0.0s
-   => => naming to docker.io/kledsonhugo/apache2:1.0.0                             0.0s
+  $ docker image build -t kledsonhugo/static-site:1.0.0 . --no-cache
+  [+] Building 27.8s (8/8) FINISHED
+   => [internal] load build definition from Dockerfile                                    0.0s
+   => => transferring dockerfile: 508B                                                    0.0s
+   => [internal] load .dockerignore                                                       0.0s
+   => => transferring context: 2B                                                         0.0s
+   => [internal] load metadata for docker.io/library/debian:latest                       12.0s
+   => [internal] load build context                                                       0.0s
+   => => transferring context: 1.02kB                                                     0.0s
+   => CACHED [1/3] FROM docker.io/library/debian@sha256:e538a2f0566efc44db21503277c7312a  0.0s
+   => [2/3] RUN apt-get update && apt-get install -y apache2 && apt-get clean            15.0s
+   => [3/3] COPY app/*.html /var/www/html/                                                0.0s
+   => exporting to image                                                                  0.7s
+   => => exporting layers                                                                 0.7s
+   => => writing image sha256:764795e7198df5651540d53a2875e656e5bbd016f73c0af62e01e8ff71  0.0s
+   => => naming to docker.io/kledsonhugo/static-site:1.0.0                                0.0s
   $
   ```
 
 ## Container Run
 
 ```
-docker run -d -p 8080:80 kledsonhugo/apache2:1.0.0
+docker run -d -p 8080:80 kledsonhugo/static-site:1.0.0
 ```
 
 - Output example
 
   ```
-  $ docker run -d -p 8080:80 kledsonhugo/apache2:1.0.0
-  6faa6008072bf3563a131da58d10acbd68b7f55a3d82d8f9f1061c74d574398f
+  $ docker run -d -p 8080:80 kledsonhugo/static-site:1.0.0
+  71298d943819571b3741710d33e16fc431340f6658f144f4851063f7586a4888
   $
   ```
 
 - Check container execution
 
   ```
-  $ docker ps -a |grep apache2
-  6faa6008072b   kledsonhugo/apache2:1.0.0   "/usr/sbin/apachectl…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp   reverent_bhabha
+  $ docker ps -a |grep static-site
+  71298d943819   kledsonhugo/static-site:1.0.0   "/usr/sbin/apachectl…"   39 seconds ago   Up 38 seconds   0.0.0.0:8080->80/tcp   inspiring_hopper
   $
   ```
 
@@ -53,6 +56,6 @@ docker run -d -p 8080:80 kledsonhugo/apache2:1.0.0
   <br/><br/>
   - Navigate to http://localhost:8080.
   <br/><br/>
-  - See Apache2 main page.
+  - See the static page.
   <br/><br/>
-     ![Apache2 main page](images/apache2.png)
+     ![Static page](images/static-site.png)
