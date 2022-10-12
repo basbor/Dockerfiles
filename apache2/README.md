@@ -51,7 +51,7 @@ docker run -d -p 8080:80 kledsonhugo/apache2:1.0.0
 
   - Open browser.
   <br/><br/>
-  - Navigate to [localhost:8080](localhost:8080).
+  - Navigate to http://localhost:8080.
   <br/><br/>
   - See Apache2 main page.
   <br/><br/>
