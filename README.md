@@ -3,9 +3,9 @@
 
 ## Dockerfile Samples
 
-|  Dockerfile  |        Description            |
+|  Dockerfile  | Summary            |
 |-------------:|-------------------------------|
-| apache2      | [Single container with Apache2](apache2) |
-| goapp        | [Simple GO application](goapp/README.md)         |
-| php-info     | [PHP info page](php-info/README.md)                 |
-| static-site  | [Sample HTML static page](static-site/README.md)       |
+| [apache2](apache2)      | Single container with Apache2 |
+| [goapp](goapp)        | Simple GO application         |
+| [php-info](php-info)     | PHP info page                 |
+| [static-site](static-site)  | Sample HTML static page       |
